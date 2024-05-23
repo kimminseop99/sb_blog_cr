@@ -1,5 +1,6 @@
 package com.example.blog.domain.post.entity;
 
+import com.example.blog.domain.member.entity.Member;
 import com.example.blog.global.jpa.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,5 +20,7 @@ public class Post extends BaseEntity {
     private String title;
 
     private String content;
+    @ManyToOne
+    private Member author;
 
 }
