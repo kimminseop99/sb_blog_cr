@@ -2,14 +2,12 @@ package com.example.blog.domain.home.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
 
     @GetMapping("/")
-    @ResponseBody
     public String home(){
-        return "hello";
+        return "templates/home/main";
     }
 }
