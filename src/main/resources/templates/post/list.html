@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  안녕
-</body>
-</html>
+<table>
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>|</th>
+        <th>내용</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post : ${postList}">
+        <td th:text="${post.title}"></td>
+        <td>|</td>
+        <td th:text="${post.content}"></td>
+        <td th:for></td>
+    </tr>
+    </tbody>
+</table>
