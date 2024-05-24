@@ -6,9 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +29,20 @@ public class PostController {
         Post post = this.postService.getPost(id);
         model.addAttribute("post", post);
         return "post/detail";
+    }
+
+    @GetMapping("/create")
+    public String create(){
+        return "post/create_form";
+    }
+
+
+    @PostMapping("/create")
+    public String Postcreate(@RequestParam(value = "title") String title, @RequestParam(value = "content") String content){
+        postService.create(title, content);
+
+
+        return "redirect:/post/list";
     }
 
 }

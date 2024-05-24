@@ -3,6 +3,7 @@ package com.example.blog.domain.post.service;
 import com.example.blog.domain.post.entity.Post;
 import com.example.blog.domain.post.repository.PostRepository;
 import com.example.blog.global.DataNotFoundException;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +21,16 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public void create(LocalDateTime createDate,String title, String content){
+    public void create(String title, String content){
         Post post = Post.builder()
-                .createDate(createDate)
+                .createDate(LocalDateTime.now())
                 .title(title)
                 .content(content)
                 .build();
         postRepository.save(post);
     }
+
+
 
     public Post getPost(Long id){
         Optional<Post> post = this.postRepository.findById(id);

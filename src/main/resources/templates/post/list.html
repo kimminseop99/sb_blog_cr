@@ -1,4 +1,8 @@
-<table border="1" xmlns:th="http://www.w3.org/1999/xhtml">
+<h1>목록</h1>
+<div>
+    <a th:href="@{/post/create}">질문 등록하기</a>
+</div>
+<table border="1">
     <thead>
         <tr>
             <th>번호</th>
@@ -9,12 +13,13 @@
     <tbody>
     <tr th:each="post, loop : ${postList}">
         <td >
-            <a th:text="${loop.index}" th:href="@{|/post/detail/${post.id}|}"></a>
+            <a th:text="${loop.count}" th:href="@{|/post/detail/${post.id}|}"></a>
         </td>
         <td>
             <a th:text="${post.title}" th:href="@{|/post/detail/${post.id}|}"></a>
         </td>
         <td th:text="${#temporals.format(post.createDate, 'yyyy년 MM월 dd일 HH시mm분')}"></td>
     </tr>
+
     </tbody>
 </table>

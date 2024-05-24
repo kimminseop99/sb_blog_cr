@@ -14,11 +14,10 @@ class BlogApplicationTests {
 	private PostService postService;
 	@Test
 	void contextLoads() {
-		for(int i = 0; i <= 30; i++){
+		for(int i = 1; i <= 30; i++){
 			String title = String.format("제목 %d", i);
 			String content = String.format("내용 %d", i);
-			LocalDateTime createDate = LocalDateTime.now();
-			postService.create(createDate, title, content);
+			postService.create( title, content);
 		}
 	}
 
