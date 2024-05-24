@@ -26,4 +26,13 @@ public class PostService {
         postRepository.save(post);
     }
 
+    public Post getPost(Integer id){
+        Optional<Post> post = this.postRepository.findById(id);
+        if(post.isPresent()){
+            return post.get();
+        }else{
+            throw new DataNotFoundException("post not found");
+        }
+    }
+
 }
