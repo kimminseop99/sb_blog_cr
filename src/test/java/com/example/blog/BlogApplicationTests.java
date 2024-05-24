@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+
 @SpringBootTest
 class BlogApplicationTests {
 
@@ -15,7 +17,8 @@ class BlogApplicationTests {
 		for(int i = 0; i <= 30; i++){
 			String title = String.format("제목 %d", i);
 			String content = String.format("내용 %d", i);
-			postService.create(title, content);
+			LocalDateTime createDate = LocalDateTime.now();
+			postService.create(createDate, title, content);
 		}
 	}
 

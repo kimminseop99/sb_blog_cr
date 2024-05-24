@@ -3,9 +3,11 @@ package com.example.blog.domain.post.controller;
 import com.example.blog.domain.post.entity.Post;
 import com.example.blog.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -25,8 +27,10 @@ public class PostController {
     }
 
     @GetMapping(value = "/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id){
-        return "post/detail"
+    public String detail(Model model, @PathVariable("id") Long id){
+        Post post = this.postService.getPost(id);
+        model.addAttribute("post", post);
+        return "post/detail";
     }
 
 }

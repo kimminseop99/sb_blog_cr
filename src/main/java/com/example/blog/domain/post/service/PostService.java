@@ -2,11 +2,13 @@ package com.example.blog.domain.post.service;
 
 import com.example.blog.domain.post.entity.Post;
 import com.example.blog.domain.post.repository.PostRepository;
+import com.example.blog.global.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,15 +20,16 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public void create(String title, String content){
+    public void create(LocalDateTime createDate,String title, String content){
         Post post = Post.builder()
+                .createDate(createDate)
                 .title(title)
                 .content(content)
                 .build();
         postRepository.save(post);
     }
 
-    public Post getPost(Integer id){
+    public Post getPost(Long id){
         Optional<Post> post = this.postRepository.findById(id);
         if(post.isPresent()){
             return post.get();
