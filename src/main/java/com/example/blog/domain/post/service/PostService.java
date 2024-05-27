@@ -30,8 +30,6 @@ public class PostService {
         postRepository.save(post);
     }
 
-
-
     public Post getPost(Long id){
         Optional<Post> post = this.postRepository.findById(id);
         if(post.isPresent()){
